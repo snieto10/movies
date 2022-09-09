@@ -6,6 +6,7 @@ import Like from "./common/like";
 class Movies extends Component {
   state = {
     movies: getMovies(),
+    pageSize: 10,
   };
 
   handleDelete = (movie) => {
@@ -21,8 +22,14 @@ class Movies extends Component {
     this.setState({ movies });
   };
 
+  onPageChange = (page) => {
+    console.log(page);
+  };
+
   render() {
     const { length: count } = this.state.movies;
+
+    const { pageSize } = this.state;
 
     if (count === 0) return <p>There are no movies in the database</p>;
 
@@ -68,7 +75,11 @@ class Movies extends Component {
           </tbody>
           <tbody></tbody>
         </table>
-        <Pagination />
+        <Pagination
+          itemsCount={count}
+          pageSize={pageSize}
+          onPageChange={this.handlePageChange}
+        />
       </React.Fragment>
     );
   }
