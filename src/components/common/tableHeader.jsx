@@ -3,6 +3,7 @@ import React, { Component } from "react";
 //columns: array
 //sortColumn: object
 //onSort: function
+//adding something to fix git
 
 class TableHeader extends Component {
   raiseSort = (path) => {
